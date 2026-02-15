@@ -2,8 +2,8 @@
 // For production, set these in your .env file:
 // VITE_TELEGRAM_BOT_TOKEN=your_bot_token
 // VITE_TELEGRAM_CHAT_ID=your_chat_id
-const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8173770031:AAFgSSksJvgu3CRorso3_pPLZi1ZTjsUxJY';
-const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '5414733748';
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
+const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID_HERE';
 
 export const sendToTelegram = async (message) => {
   try {
