@@ -1,16 +1,111 @@
-# React + Vite
+# 🍵 Choyxona Boshqaruv Tizimi (Tea House Management System)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern tea house management system built with React and TailwindCSS. Perfect for managing orders, tracking sales, and monitoring debts in real-time.
 
-Currently, two official plugins are available:
+[O'zbek tilida o'qish (Read in Uzbek)](./UZBEK_README.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- 🛒 **Order Management** - Add and track orders with product names and prices
+- 💰 **Daily Reports** - View earnings, sales count, and debt tracking
+- 📊 **Real-time Updates** - Instant calculation of totals and statistics
+- 💳 **Debt Tracking** - Mark and track orders given on credit
+- 🗑️ **Order Management** - Delete orders with confirmation
+- 💾 **LocalStorage** - Persistent data storage (no backend required)
+- 📱 **Telegram Integration** - Send daily reports to Telegram bot
+- 🌐 **Uzbek Language** - Full interface in Uzbek language
+- 🎨 **Modern UI** - Beautiful and responsive design with TailwindCSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+Open `http://localhost:5173` in your browser.
+
+## How It Works
+
+### Adding Orders
+1. Enter product name (e.g., Shashlik, Tea)
+2. Enter price in som
+3. Check "Qarzga berish" (Give on credit) if it's a debt
+4. Click "Buyurtma qo'shish" (Add Order)
+
+### Viewing Reports
+The daily report shows:
+- Total earnings (excluding debts)
+- Number of products sold
+- Total debt amount
+- Detailed product breakdown
+
+### Telegram Integration
+Click "📤 Telegramga yuborish" (Send to Telegram) to send the daily report to your configured Telegram bot.
+
+## Configuration
+
+### Telegram Bot Setup
+
+**Option 1: Using Environment Variables (Recommended)**
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and add your credentials:
+   ```
+   VITE_TELEGRAM_BOT_TOKEN=your_bot_token_here
+   VITE_TELEGRAM_CHAT_ID=your_chat_id_here
+   ```
+
+3. Restart the dev server
+
+**Option 2: Direct Configuration (Development Only)**
+
+Edit `src/services/telegramService.js`:
+
+```javascript
+const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';
+const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID';
+```
+
+To get your bot token:
+1. Message [@BotFather](https://t.me/botfather) on Telegram
+2. Send `/newbot` command
+3. Follow the instructions to get your token
+
+## Tech Stack
+
+- **React 19** - UI framework
+- **Vite** - Build tool
+- **TailwindCSS 4** - Styling
+- **LocalStorage** - Data persistence
+- **Telegram Bot API** - Report delivery
+
+## Data Storage
+
+All data is stored in browser LocalStorage:
+- No backend server required
+- Data persists across browser sessions
+- Each computer maintains its own data
+- Data is cleared if browser storage is cleared
+
+## Screenshots
+
+![Tea House Management System](https://github.com/user-attachments/assets/85ee9e50-e526-477c-99f3-42a21bc6f9bf)
+
+## License
+
+MIT License - Feel free to use for any purpose.
+
+## Author
+
+Built by Webdunyosi for tea houses and small restaurants.
