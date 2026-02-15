@@ -53,7 +53,24 @@ Click "📤 Telegramga yuborish" (Send to Telegram) to send the daily report to 
 
 ### Telegram Bot Setup
 
-Edit `src/services/telegramService.js` to configure your bot:
+**Option 1: Using Environment Variables (Recommended)**
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and add your credentials:
+   ```
+   VITE_TELEGRAM_BOT_TOKEN=your_bot_token_here
+   VITE_TELEGRAM_CHAT_ID=your_chat_id_here
+   ```
+
+3. Restart the dev server
+
+**Option 2: Direct Configuration (Development Only)**
+
+Edit `src/services/telegramService.js`:
 
 ```javascript
 const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN';

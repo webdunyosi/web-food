@@ -66,7 +66,24 @@ Buyurtmalar ro'yxatida har bir buyurtma yonidagi "O'chirish" tugmasini bosing.
 
 ## Telegram Bot Konfiguratsiya
 
-Telegram bot sozlamalarini o'zgartirish uchun `src/services/telegramService.js` faylini tahrirlang:
+**1-usul: Environment Variables (Tavsiya etiladi)**
+
+1. `.env.example` faylini `.env` ga nusxalang:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. `.env` faylini tahrirlang va ma'lumotlaringizni kiriting:
+   ```
+   VITE_TELEGRAM_BOT_TOKEN=sizning_bot_token
+   VITE_TELEGRAM_CHAT_ID=sizning_chat_id
+   ```
+
+3. Dev serverni qayta ishga tushiring
+
+**2-usul: To'g'ridan-to'g'ri sozlash (Faqat ishlab chiqish uchun)**
+
+`src/services/telegramService.js` faylini tahrirlang:
 
 ```javascript
 const TELEGRAM_BOT_TOKEN = 'SIZNING_BOT_TOKEN';
