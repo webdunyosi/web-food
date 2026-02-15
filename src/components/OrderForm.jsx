@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { tables } from '../data/menuData';
 
 const OrderForm = ({ onAddOrder }) => {
   const [itemName, setItemName] = useState('');
   const [price, setPrice] = useState('');
+  const [tableNumber, setTableNumber] = useState('');
   const [isDebt, setIsDebt] = useState(false);
 
   const handleSubmit = (e) => {
@@ -17,6 +19,7 @@ const OrderForm = ({ onAddOrder }) => {
       id: Date.now(),
       itemName: itemName.trim(),
       price: parseFloat(price),
+      tableNumber: tableNumber || null,
       isDebt,
       date: new Date().toISOString(),
     };
@@ -26,6 +29,7 @@ const OrderForm = ({ onAddOrder }) => {
     // Reset form
     setItemName('');
     setPrice('');
+    setTableNumber('');
     setIsDebt(false);
   };
 
@@ -59,6 +63,24 @@ const OrderForm = ({ onAddOrder }) => {
             step="1000"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Stol raqami (ixtiyoriy)
+          </label>
+          <select
+            value={tableNumber}
+            onChange={(e) => setTableNumber(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="">Tanlash shart emas</option>
+            {tables.map((table) => (
+              <option key={table.id} value={table.id}>
+                {table.name}
+              </option>
+            ))}
+          </select>
         </div>
         
         <div className="flex items-center">

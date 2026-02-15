@@ -28,6 +28,11 @@ const OrderList = ({ orders, onDeleteOrder }) => {
             <div className="flex-1">
               <h3 className="font-semibold text-gray-800">{order.itemName}</h3>
               <div className="flex items-center gap-3 mt-1">
+                {order.tableNumber && (
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                    Stol {order.tableNumber}
+                  </span>
+                )}
                 <p className="text-sm text-gray-600">
                   {order.price.toLocaleString()} so'm
                 </p>

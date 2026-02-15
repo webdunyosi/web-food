@@ -78,6 +78,7 @@ const DailyReport = ({ orders }) => {
                 >
                   <span className="text-gray-700">
                     {index + 1}. {order.itemName}
+                    {order.tableNumber && ` (Stol ${order.tableNumber})`}
                   </span>
                   <div className="flex items-center gap-2">
                     <span className="font-medium text-gray-800">
