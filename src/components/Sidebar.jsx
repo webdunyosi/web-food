@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sidebar = ({ currentPage, onPageChange }) => {
   return (
-    <aside className="w-64 flex flex-col bg-linear-to-b from-emerald-600 to-teal-600 shadow-xl">
+    <aside className="w-64 flex flex-col bg-linear-to-b from-emerald-600 to-teal-600 shadow-xl fixed left-0 top-0 h-screen">
       {/* Logo/Brand */}
       <div className="p-6 py-3 border-b border-white/20">
         <div className="flex items-center gap-3">
