@@ -4,13 +4,14 @@ Choyxonalar uchun hisob-kitob va buyurtmalarni boshqarish tizimi. ReactJS va Tai
 
 ## Xususiyatlar
 
+- ✅ **Menyu tizimi** - Kategoriyalangan menyudan mahsulotlarni tanlash va stolga buyurtma berish
 - ✅ **Buyurtmalarni kiritish** - Mahsulot nomi va narxini kiriting
 - ✅ **Qarz hisobi** - Qarzga berilgan mahsulotlarni belgilash
 - ✅ **Kunlik hisobot** - Daromad, sotilgan mahsulotlar va qarzlarni ko'rish
 - ✅ **Buyurtmalar ro'yxati** - Bugungi barcha buyurtmalarni ko'rish
 - ✅ **O'chirish** - Buyurtmalarni o'chirish imkoniyati
 - ✅ **Ma'lumotlar saqlash** - LocalStorage orqali ma'lumotlarni saqlash
-- ✅ **Telegram integratsiya** - Kunlik hisobotni Telegram botga yuborish
+- ✅ **Telegram integratsiya** - Buyurtmalar va kunlik hisobotni Telegram botga yuborish
 - ✅ **O'zbek tili** - To'liq o'zbek tilida interfeys
 - ✅ **Zamonaviy dizayn** - TailwindCSS bilan chiroyli va tezkor dizayn
 
@@ -39,6 +40,16 @@ npm run build
 Qurilgan fayllar `dist` papkasida saqlanadi.
 
 ## Foydalanish
+
+### Menyu orqali buyurtma berish (Yangi!)
+
+1. Sidebar'dan "Menyu" sahifasini oching
+2. Kategoriyalar bo'yicha mahsulotlarni ko'ring (Taomlar, Ichimliklar, Non va shirinliklar)
+3. Mahsulotlarni tanlab savatga qo'shing (+/- tugmalari bilan miqdorni sozlang)
+4. Stol raqamini kiriting (masalan: 20)
+5. "Buyurtmani tasdiqlash" tugmasini bosing - buyurtma Telegram botga yuboriladi
+
+**Misol:** Alimardon 20-stolga o'tirdi. 2ta shashlik, 1ta cola, 1ta non zakaz qildi. Tizim jami summani hisoblab, buyurtmani Telegram botga yuboradi.
 
 ### Buyurtma qo'shish
 
