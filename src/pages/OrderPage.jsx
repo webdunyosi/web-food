@@ -4,6 +4,8 @@ import { IoArrowBack, IoCart } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
 import ReceiptModal from '../components/ReceiptModal';
 
+const SERVICE_FEE_PERCENTAGE = 0.1; // 10% service fee
+
 const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   const [tableNumber, setTableNumber] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,7 +29,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   }, [cart]);
 
   const serviceFee = useMemo(() => {
-    return subtotal * 0.1; // 10% service fee
+    return subtotal * SERVICE_FEE_PERCENTAGE;
   }, [subtotal]);
 
   const totalPrice = useMemo(() => {
@@ -65,9 +67,9 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
       const receiptData = {
         tableNumber,
         cart: [...cart],
-        subtotal: subtotal,
-        serviceFee: serviceFee,
-        totalPrice: totalPrice,
+        subtotal,
+        serviceFee,
+        totalPrice,
         timestamp: new Date().toLocaleString('uz-UZ'),
         telegramSuccess: false
       };
