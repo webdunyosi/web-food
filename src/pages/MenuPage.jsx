@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { menuCategories } from '../data/menuData';
 import { IoCart, IoRestaurant, IoFastFood, IoCafe } from 'react-icons/io5';
 import { GiBread } from 'react-icons/gi';
 
 const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   const [selectedCategory, setSelectedCategory] = useState(menuCategories[0].id);
-  const [animationKey, setAnimationKey] = useState(0);
-
-  // Reset animation when category changes
-  useEffect(() => {
-    setAnimationKey(prev => prev + 1);
-  }, [selectedCategory]);
 
   const currentCategory = menuCategories.find(cat => cat.id === selectedCategory);
 
@@ -77,7 +71,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
 
           return (
             <div
-              key={`${product.id}-${animationKey}`}
+              key={`${product.id}-${selectedCategory}`}
               className="card-animate bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
               style={{
                 animationDelay: `${index * 0.1}s`
