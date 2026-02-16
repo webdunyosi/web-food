@@ -16,6 +16,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
         {cart.length > 0 && (
           <button
             onClick={onNavigateToOrder}
+            aria-label={`Savatga o'tish - ${cart.length} mahsulot`}
             className="relative p-4 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <span className="text-3xl">🛒</span>
