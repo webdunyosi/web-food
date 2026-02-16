@@ -8,7 +8,7 @@ const Header = () => {
           Choyxona
         </h1>
         <p className="text-gray-600 mt-1">
-          Menyuni ko'ring va buyurtma bering
+          Menyuni boshqarish tizimi
         </p>
       </div>
     </header>
