@@ -2,11 +2,18 @@ import React from 'react';
 
 const Sidebar = ({ currentPage, onPageChange }) => {
   return (
-    <aside className="w-64 flex flex-col">
+    <aside className="w-64 flex flex-col bg-linear-to-b from-emerald-600 to-teal-600 shadow-xl">
       {/* Logo/Brand */}
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-xl font-bold text-gray-800">🍵 Choyxona</h2>
-        <p className="text-xs text-gray-500 mt-1">Boshqaruv Tizimi</p>
+      <div className="p-6 py-3 border-b border-white/20">
+        <div className="flex items-center gap-3">
+          <div className="text-4xl bg-white/10 p-2 rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+            🍵
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-white drop-shadow-md">Choyxona</h2>
+            <p className="text-xs text-emerald-50 mt-1">Boshqaruv Tizimi</p>
+          </div>
+        </div>
       </div>
       
       {/* Navigation */}
@@ -15,8 +22,10 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           <li>
             <button
               onClick={() => onPageChange('menu')}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors ${
-                currentPage === 'menu' ? 'bg-blue-50 border-l-4 border-blue-600 font-medium' : ''
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                currentPage === 'menu' 
+                  ? 'bg-white text-emerald-700 shadow-lg font-medium transform scale-105' 
+                  : 'text-white hover:bg-white/20 backdrop-blur-sm'
               }`}
             >
               <svg 
@@ -38,8 +47,10 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           <li>
             <button
               onClick={() => onPageChange('order')}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors ${
-                currentPage === 'order' ? 'bg-blue-50 border-l-4 border-blue-600 font-medium' : ''
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                currentPage === 'order' 
+                  ? 'bg-white text-emerald-700 shadow-lg font-medium transform scale-105' 
+                  : 'text-white hover:bg-white/20 backdrop-blur-sm'
               }`}
             >
               <svg 
