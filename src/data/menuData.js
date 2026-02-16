@@ -29,7 +29,7 @@ export const menuCategories = [
   {
     id: 'bread',
     name: 'Non va shirinliklar',
-    icon: 'IoIceCream',
+    icon: 'GiBread',
     products: [
       { id: 'non', name: 'Non', price: 2000, image: '/menu/non/non.png' },
       { id: 'kulcha', name: 'Kulcha', price: 3000, image: '/menu/non/kulcha.png' },

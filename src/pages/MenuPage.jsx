@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { menuCategories } from '../data/menuData';
-import { IoCart, IoRestaurant, IoFastFood, IoCafe, IoIceCream } from 'react-icons/io5';
+import { IoCart, IoRestaurant, IoFastFood, IoCafe } from 'react-icons/io5';
+import { GiBread } from 'react-icons/gi';
 
 const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   const [selectedCategory, setSelectedCategory] = useState(menuCategories[0].id);
@@ -11,7 +12,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   const iconMap = {
     IoFastFood: IoFastFood,
     IoCafe: IoCafe,
-    IoIceCream: IoIceCream,
+    GiBread: GiBread,
   };
 
   const getIcon = (iconName) => {
