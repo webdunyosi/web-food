@@ -143,7 +143,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                     }}
                     className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg"
                   >
-                    <IoCart className="inline-block mr-1" />
+                    <IoCart className="inline-block mr-1" aria-hidden="true" />
                     Qo'shish
                   </button>
                 )}

@@ -107,7 +107,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
           </h2>
           {cart.length === 0 ? (
             <div className="text-center py-12">
-              <IoCart className="text-6xl text-gray-400 mb-4" aria-hidden="true" />
+              <IoCart className="text-6xl text-gray-400 mb-4 mx-auto" aria-hidden="true" />
               <p className="text-gray-500 text-lg mb-4">
                 Buyurtma bo'sh
               </p>
