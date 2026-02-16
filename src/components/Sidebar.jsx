@@ -4,10 +4,14 @@ const Sidebar = ({ currentPage, onPageChange }) => {
   return (
     <aside className="w-64 flex flex-col bg-linear-to-b from-emerald-600 to-teal-600 shadow-xl fixed left-0 top-0 h-screen">
       {/* Logo/Brand */}
-      <div className="p-6 py-3 border-b border-white/20">
+      <div className="p-6 py-2 border-b border-white/20">
         <div className="flex items-center gap-3">
-          <div className="text-4xl bg-white/10 p-2 rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-300">
-            🍵
+          <div className="shrink-0">
+            <img 
+              src="/logo.png" 
+              alt="Choyxona Tea House Logo" 
+              className="h-16 w-16 object-contain rounded-lg bg-white/10 p-1 backdrop-blur-sm hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div>
             <h2 className="text-xl font-bold text-white drop-shadow-md">Choyxona</h2>
