@@ -1,5 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
+// Helper function to format numbers with locale fallback
+const formatPrice = (price) => {
+  try {
+    return price.toLocaleString('uz-UZ');
+  } catch {
+    // Fallback to manual formatting if uz-UZ is not supported
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+};
+
 const MenuPage = () => {
   // Load menu items from localStorage on mount
   const [menuItems, setMenuItems] = useState(() => {
@@ -16,11 +26,12 @@ const MenuPage = () => {
 
   const handleAddItem = (e) => {
     e.preventDefault();
-    if (newItem.name && newItem.price) {
+    const price = parseFloat(newItem.price);
+    if (newItem.name.trim() && newItem.price && price > 0) {
       const item = {
         id: crypto.randomUUID(),
-        name: newItem.name,
-        price: parseFloat(newItem.price),
+        name: newItem.name.trim(),
+        price: price,
         category: newItem.category || 'Boshqa',
         createdAt: new Date().toISOString(),
       };
@@ -145,7 +156,7 @@ const MenuPage = () => {
                       </button>
                     </div>
                     <p className="text-lg font-bold text-blue-600">
-                      {item.price.toLocaleString('uz-UZ')} so'm
+                      {formatPrice(item.price)} so'm
                     </p>
                   </div>
                 ))}
@@ -171,7 +182,7 @@ const MenuPage = () => {
             <div>
               <p className="text-sm opacity-90">O'rtacha narx</p>
               <p className="text-2xl font-bold">
-                {Math.round(menuItems.reduce((sum, item) => sum + item.price, 0) / menuItems.length).toLocaleString('uz-UZ')} so'm
+                {formatPrice(Math.round(menuItems.reduce((sum, item) => sum + item.price, 0) / menuItems.length))} so'm
               </p>
             </div>
           </div>
