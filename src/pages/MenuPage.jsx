@@ -36,7 +36,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
               }`}
             >
               <span className="text-2xl">{getIcon(category.icon)}</span>
-              <span>{category.name}</span>
+              <span className='hidden md:inline-block'>{category.name}</span>
             </button>
           ))}
         </div>
