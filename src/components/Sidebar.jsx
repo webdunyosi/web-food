@@ -2,21 +2,23 @@ import React from 'react';
 
 const Sidebar = ({ currentPage, onPageChange }) => {
   return (
-    <aside className="w-64 bg-white shadow-lg flex flex-col">
+    <aside className="w-64 bg-white shadow-md flex flex-col">
       {/* Logo/Brand */}
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-xl font-bold text-gray-800">🍵 Choyxona</h2>
-        <p className="text-xs text-gray-500 mt-1">Boshqaruv Tizimi</p>
+      <div className="px-6 py-4">
+        <h2 className="text-2xl font-bold text-gray-800">🍵 Choyxona</h2>
+        <p className="text-gray-600 mt-1">Boshqaruv Tizimi</p>
       </div>
       
       {/* Navigation */}
-      <nav className="flex-1 p-4">
+      <nav className="flex-1 px-4 py-6">
         <ul className="space-y-2">
           <li>
             <button
               onClick={() => onPageChange('menu')}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors ${
-                currentPage === 'menu' ? 'bg-blue-50 border-l-4 border-blue-600 font-medium' : ''
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                currentPage === 'menu' 
+                  ? 'bg-gray-800 text-white font-medium' 
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
               <svg 
@@ -38,8 +40,10 @@ const Sidebar = ({ currentPage, onPageChange }) => {
           <li>
             <button
               onClick={() => onPageChange('order')}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors ${
-                currentPage === 'order' ? 'bg-blue-50 border-l-4 border-blue-600 font-medium' : ''
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                currentPage === 'order' 
+                  ? 'bg-gray-800 text-white font-medium' 
+                  : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
               <svg 
