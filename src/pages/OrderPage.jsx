@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { sendToTelegram } from '../services/telegramService';
+import { IoArrowBack, IoCart } from 'react-icons/io5';
+import { MdCheckCircle } from 'react-icons/md';
 
 const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   const [tableNumber, setTableNumber] = useState('');
@@ -72,19 +74,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
           onClick={onBackToMenu}
           className="flex items-center gap-2 px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
         >
-          <svg 
-            className="w-5 h-5" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-            />
-          </svg>
+          <IoArrowBack className="w-5 h-5" />
           <span>Menyuga qaytish</span>
         </button>
       </div>
@@ -117,7 +107,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
           </h2>
           {cart.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-gray-400 text-6xl mb-4">🛒</div>
+              <IoCart className="text-6xl text-gray-400 mb-4 mx-auto" aria-hidden="true" />
               <p className="text-gray-500 text-lg mb-4">
                 Buyurtma bo'sh
               </p>
@@ -197,7 +187,12 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
               aria-busy={isSubmitting}
               className="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700 transition-colors font-medium text-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Yuborilmoqda...' : '✅ Buyurtmani tasdiqlash va Telegramga yuborish'}
+              {isSubmitting ? 'Yuborilmoqda...' : (
+                <>
+                  <MdCheckCircle className="inline-block mr-2 text-xl" />
+                  Buyurtmani tasdiqlash va Telegramga yuborish
+                </>
+              )}
             </button>
           </>
         )}

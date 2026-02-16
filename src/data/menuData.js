@@ -3,7 +3,7 @@ export const menuCategories = [
   {
     id: 'food',
     name: 'Taomlar',
-    icon: '🍖',
+    icon: 'IoFastFood',
     products: [
       { id: 'shashlik', name: 'Shashlik', price: 25000, image: '/menu/taomlar/shashlik.png' },
       { id: 'qozon-kabob', name: 'Qozon kabob', price: 30000, image: '/menu/taomlar/qozon-kabob.png' },
@@ -16,7 +16,7 @@ export const menuCategories = [
   {
     id: 'drinks',
     name: 'Ichimliklar',
-    icon: '🥤',
+    icon: 'IoCafe',
     products: [
       { id: 'choy', name: 'Choy', price: 3000, image: '/menu/ichimliklar/choy.png' },
       { id: 'kofe', name: 'Kofe', price: 8000, image: '/menu/ichimliklar/coffe.png' },
@@ -29,7 +29,7 @@ export const menuCategories = [
   {
     id: 'bread',
     name: 'Non va shirinliklar',
-    icon: '🍞',
+    icon: 'GiBread',
     products: [
       { id: 'non', name: 'Non', price: 2000, image: '/menu/non/non.png' },
       { id: 'kulcha', name: 'Kulcha', price: 3000, image: '/menu/non/kulcha.png' },

@@ -1,16 +1,33 @@
 import React, { useState } from 'react';
 import { menuCategories } from '../data/menuData';
+import { IoCart, IoRestaurant, IoFastFood, IoCafe } from 'react-icons/io5';
+import { GiBread } from 'react-icons/gi';
 
 const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   const [selectedCategory, setSelectedCategory] = useState(menuCategories[0].id);
 
   const currentCategory = menuCategories.find(cat => cat.id === selectedCategory);
 
+  // Icon mapping
+  const iconMap = {
+    IoFastFood: IoFastFood,
+    IoCafe: IoCafe,
+    GiBread: GiBread,
+  };
+
+  const getIcon = (iconName) => {
+    const IconComponent = iconMap[iconName];
+    return IconComponent ? <IconComponent className="text-2xl" /> : null;
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">🍽️ Menyu</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+            <IoRestaurant className="text-emerald-600" />
+            Menyu
+          </h1>
         </div>
         {cart.length > 0 && (
           <button
@@ -18,7 +35,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
             aria-label={`Savatga o'tish - ${cart.length} mahsulot`}
             className="cursor-pointer relative p-1 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <span className="text-2xl">🛒</span>
+            <IoCart className="text-2xl" />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-sm font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md">
               {cart.length}
             </span>
@@ -39,7 +56,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              <span className="text-2xl">{category.icon}</span>
+              <span className="text-2xl">{getIcon(category.icon)}</span>
               <span>{category.name}</span>
             </button>
           ))}
@@ -126,7 +143,8 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                     }}
                     className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg"
                   >
-                    🛒 Qo'shish
+                    <IoCart className="inline-block mr-1" aria-hidden="true" />
+                    Qo'shish
                   </button>
                 )}
               </div>
