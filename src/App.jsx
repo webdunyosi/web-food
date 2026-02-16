@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Layout from './components/Layout';
-import OrdersPage from './pages/OrdersPage';
 import MenuPage from './pages/MenuPage';
 
 const App = () => {
@@ -10,8 +9,6 @@ const App = () => {
     switch (currentPage) {
       case 'menu':
         return <MenuPage />;
-      case 'orders':
-        return <OrdersPage />;
       default:
         return <MenuPage />;
     }
