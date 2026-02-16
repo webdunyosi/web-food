@@ -98,7 +98,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
         <h1 className="text-3xl font-bold text-gray-800">Buyurtma</h1>
         <button
           onClick={onBackToMenu}
-          className="flex items-center gap-2 px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-4 py-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
         >
           <IoArrowBack className="w-5 h-5" />
           <span>Menyuga qaytish</span>
@@ -122,7 +122,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
             }}
             placeholder="Masalan: 20"
             min="1"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           />
         </div>
 
@@ -139,7 +139,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
               </p>
               <button
                 onClick={onBackToMenu}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium"
               >
                 Menyuga o'tish
               </button>
@@ -176,7 +176,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
                       </button>
                     </div>
                     <div className="text-right w-32">
-                      <p className="font-bold text-blue-600 text-lg">
+                      <p className="font-bold text-emerald-600 text-lg">
                         {(item.price * item.quantity).toLocaleString()} so'm
                       </p>
                       <button
@@ -201,7 +201,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
                 <span className="text-xl font-medium text-gray-700">
                   Jami:
                 </span>
-                <span className="text-3xl font-bold text-blue-600">
+                <span className="text-3xl font-bold text-emerald-600">
                   {getTotalPrice().toLocaleString()} so'm
                 </span>
               </div>
