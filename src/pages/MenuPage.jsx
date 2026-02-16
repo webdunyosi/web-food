@@ -16,13 +16,12 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
         {cart.length > 0 && (
           <button
             onClick={onNavigateToOrder}
-            className="flex items-center gap-3 px-8 py-4 bg-linear-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="relative p-4 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <span className="text-2xl">🛒</span>
-            <div className="text-left">
-              <div className="text-sm opacity-90">Savat</div>
-              <div className="font-bold">{cart.length} mahsulot</div>
-            </div>
+            <span className="text-3xl">🛒</span>
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center shadow-md">
+              {cart.length}
+            </span>
           </button>
         )}
       </div>
