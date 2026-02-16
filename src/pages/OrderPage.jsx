@@ -3,11 +3,13 @@ import { sendToTelegram } from '../services/telegramService';
 import { IoArrowBack, IoCart } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
 import ReceiptModal from '../components/ReceiptModal';
+import { waiters, getWaiterById, getWaiterFullName } from '../data/waitersData';
 
 const SERVICE_FEE_PERCENTAGE = 0.1; // 10% service fee
 
 const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   const [tableNumber, setTableNumber] = useState('');
+  const [selectedWaiterId, setSelectedWaiterId] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showReceipt, setShowReceipt] = useState(false);
   const [orderData, setOrderData] = useState(null);
@@ -42,6 +44,11 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
       return;
     }
 
+    if (!selectedWaiterId) {
+      alert('Iltimos, afitsantni tanlang!');
+      return;
+    }
+
     if (cart.length === 0) {
       alert('Iltimos, kamida bitta mahsulot tanlang!');
       return;
@@ -50,8 +57,12 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
     setIsSubmitting(true);
 
     try {
+      const selectedWaiter = getWaiterById(Number(selectedWaiterId));
+      const waiterFullName = getWaiterFullName(selectedWaiter);
+
       // Format order for Telegram
       let message = `<b>🍽 Yangi Buyurtma - Stol ${tableNumber}</b>\n\n`;
+      message += `<b>👤 Afitsant:</b> ${waiterFullName}\n`;
       message += `<b>Buyurtma vaqti:</b> ${new Date().toLocaleString('uz-UZ')}\n\n`;
       message += `<b>Buyurtmalar:</b>\n`;
       
@@ -66,6 +77,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
       // Prepare order data for receipt first
       const receiptData = {
         tableNumber,
+        waiter: selectedWaiter,
         cart: [...cart],
         subtotal,
         serviceFee,
@@ -84,6 +96,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
       setShowReceipt(true);
       setCart([]);
       setTableNumber('');
+      setSelectedWaiterId('');
       
       // Log warning if Telegram failed
       if (!success) {
@@ -138,6 +151,25 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
             min="1"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           />
+        </div>
+
+        {/* Waiter selection */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Afitsant
+          </label>
+          <select
+            value={selectedWaiterId}
+            onChange={(e) => setSelectedWaiterId(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          >
+            <option value="">Afitsantni tanlang...</option>
+            {waiters.map((waiter) => (
+              <option key={waiter.id} value={waiter.id}>
+                {getWaiterFullName(waiter)}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Cart items */}

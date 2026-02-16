@@ -1,11 +1,12 @@
 import React from 'react';
 import { IoClose } from 'react-icons/io5';
 import { MdCheckCircle, MdPrint } from 'react-icons/md';
+import { getWaiterFullName } from '../data/waitersData';
 
 const ReceiptModal = ({ isOpen, onClose, orderData }) => {
   if (!isOpen) return null;
 
-  const { tableNumber, cart, subtotal, serviceFee, totalPrice, timestamp, telegramSuccess } = orderData;
+  const { tableNumber, waiter, cart, subtotal, serviceFee, totalPrice, timestamp, telegramSuccess } = orderData;
 
   const handlePrint = () => {
     window.print();
@@ -52,6 +53,12 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
               <span className="text-gray-600">Stol raqami:</span>
               <span className="font-semibold text-gray-800">{tableNumber}</span>
             </div>
+            {waiter && (
+              <div className="flex justify-between">
+                <span className="text-gray-600">Afitsant:</span>
+                <span className="font-semibold text-gray-800">{getWaiterFullName(waiter)}</span>
+              </div>
+            )}
             <div className="flex justify-between">
               <span className="text-gray-600">Sana va vaqt:</span>
               <span className="font-semibold text-gray-800">{timestamp}</span>
