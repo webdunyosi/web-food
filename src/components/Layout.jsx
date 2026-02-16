@@ -9,7 +9,7 @@ const Layout = ({ children, currentPage, onPageChange }) => {
       <Sidebar currentPage={currentPage} onPageChange={onPageChange} />
       
       {/* Main content area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col ml-64">
         {/* Header */}
         <Header />
         
