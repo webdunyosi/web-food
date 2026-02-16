@@ -6,13 +6,14 @@ A modern tea house management system built with React and TailwindCSS. Perfect f
 
 ## Features
 
+- 🍽️ **Menu Ordering** - Browse categorized menu, select items, and send orders to specific tables
 - 🛒 **Order Management** - Add and track orders with product names and prices
 - 💰 **Daily Reports** - View earnings, sales count, and debt tracking
 - 📊 **Real-time Updates** - Instant calculation of totals and statistics
 - 💳 **Debt Tracking** - Mark and track orders given on credit
 - 🗑️ **Order Management** - Delete orders with confirmation
 - 💾 **LocalStorage** - Persistent data storage (no backend required)
-- 📱 **Telegram Integration** - Send daily reports to Telegram bot
+- 📱 **Telegram Integration** - Send orders and daily reports to Telegram bot
 - 🌐 **Uzbek Language** - Full interface in Uzbek language
 - 🎨 **Modern UI** - Beautiful and responsive design with TailwindCSS
 
@@ -32,6 +33,15 @@ npm run build
 Open `http://localhost:5173` in your browser.
 
 ## How It Works
+
+### Menu Ordering (New!)
+1. Open the "Menyu" page from the sidebar
+2. Browse products by category (Food, Drinks, Bread & Sweets)
+3. Add items to cart with +/- quantity controls
+4. Enter the table number
+5. Click "Buyurtmani tasdiqlash" (Confirm Order) to send to Telegram
+
+**Example:** Customer at table 20 orders 2 Shashlik, 1 Cola, and 1 Non - the system calculates total and sends formatted order to Telegram.
 
 ### Adding Orders
 1. Enter product name (e.g., Shashlik, Tea)
