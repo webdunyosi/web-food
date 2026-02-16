@@ -1,12 +1,6 @@
 import React from 'react';
 
 const Sidebar = ({ currentPage, setCurrentPage }) => {
-  const handleNavigation = (page) => {
-    if (setCurrentPage) {
-      setCurrentPage(page);
-    }
-  };
-
   return (
     <aside className="w-64 bg-white shadow-lg flex flex-col">
       {/* Logo/Brand */}
@@ -20,7 +14,7 @@ const Sidebar = ({ currentPage, setCurrentPage }) => {
         <ul className="space-y-2">
           <li>
             <button
-              onClick={() => handleNavigation('orders')}
+              onClick={() => setCurrentPage('orders')}
               className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 font-medium rounded-lg transition-colors ${
                 currentPage === 'orders'
                   ? 'bg-blue-50 border-l-4 border-blue-600'
@@ -45,7 +39,7 @@ const Sidebar = ({ currentPage, setCurrentPage }) => {
           </li>
           <li>
             <button
-              onClick={() => handleNavigation('menu')}
+              onClick={() => setCurrentPage('menu')}
               className={`w-full flex items-center gap-3 px-4 py-3 text-gray-700 font-medium rounded-lg transition-colors ${
                 currentPage === 'menu'
                   ? 'bg-blue-50 border-l-4 border-blue-600'

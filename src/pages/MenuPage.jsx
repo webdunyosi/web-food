@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const MenuPage = () => {
   // Load menu items from localStorage on mount
@@ -18,7 +18,7 @@ const MenuPage = () => {
     e.preventDefault();
     if (newItem.name && newItem.price) {
       const item = {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         name: newItem.name,
         price: parseFloat(newItem.price),
         category: newItem.category || 'Boshqa',
@@ -36,14 +36,16 @@ const MenuPage = () => {
   };
 
   // Group items by category
-  const groupedItems = menuItems.reduce((acc, item) => {
-    const category = item.category || 'Boshqa';
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(item);
-    return acc;
-  }, {});
+  const groupedItems = useMemo(() => {
+    return menuItems.reduce((acc, item) => {
+      const category = item.category || 'Boshqa';
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(item);
+      return acc;
+    }, {});
+  }, [menuItems]);
 
   return (
     <div className="max-w-7xl mx-auto">
