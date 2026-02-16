@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { sendToTelegram } from '../services/telegramService';
 import { IoArrowBack, IoCart } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
 import ReceiptModal from '../components/ReceiptModal';
+
+const SERVICE_FEE_PERCENTAGE = 0.1; // 10% service fee
 
 const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   const [tableNumber, setTableNumber] = useState('');
@@ -22,9 +24,17 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
     }
   };
 
-  const getTotalPrice = () => {
+  const subtotal = useMemo(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  }, [cart]);
+
+  const serviceFee = useMemo(() => {
+    return Math.round(subtotal * SERVICE_FEE_PERCENTAGE);
+  }, [subtotal]);
+
+  const totalPrice = useMemo(() => {
+    return subtotal + serviceFee;
+  }, [subtotal, serviceFee]);
 
   const handleSubmitOrder = async () => {
     if (!tableNumber.trim()) {
@@ -49,13 +59,17 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
         message += `${index + 1}. ${item.name} x ${item.quantity} = ${(item.price * item.quantity).toLocaleString()} so'm\n`;
       });
       
-      message += `\n<b>💰 Jami summa:</b> ${getTotalPrice().toLocaleString()} so'm`;
+      message += `\n<b>📋 Oraliq summa:</b> ${subtotal.toLocaleString()} so'm\n`;
+      message += `<b>🔧 Xizmat haqi (10%):</b> ${serviceFee.toLocaleString()} so'm\n`;
+      message += `<b>💰 Jami summa:</b> ${totalPrice.toLocaleString()} so'm`;
 
       // Prepare order data for receipt first
       const receiptData = {
         tableNumber,
         cart: [...cart],
-        totalPrice: getTotalPrice(),
+        subtotal,
+        serviceFee,
+        totalPrice,
         timestamp: new Date().toLocaleString('uz-UZ'),
         telegramSuccess: false
       };
@@ -197,13 +211,27 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
         {cart.length > 0 && (
           <>
             <div className="border-t pt-6 mb-6">
-              <div className="flex justify-between items-center">
-                <span className="text-xl font-medium text-gray-700">
-                  Jami:
-                </span>
-                <span className="text-3xl font-bold text-emerald-600">
-                  {getTotalPrice().toLocaleString()} so'm
-                </span>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-gray-700">
+                  <span className="text-lg">Oraliq summa:</span>
+                  <span className="text-xl font-semibold">
+                    {subtotal.toLocaleString()} so'm
+                  </span>
+                </div>
+                <div className="flex justify-between items-center text-gray-700">
+                  <span className="text-lg">Xizmat haqi (10%):</span>
+                  <span className="text-xl font-semibold">
+                    {serviceFee.toLocaleString()} so'm
+                  </span>
+                </div>
+                <div className="border-t pt-2 flex justify-between items-center">
+                  <span className="text-xl font-medium text-gray-700">
+                    Jami:
+                  </span>
+                  <span className="text-3xl font-bold text-emerald-600">
+                    {totalPrice.toLocaleString()} so'm
+                  </span>
+                </div>
               </div>
             </div>
 

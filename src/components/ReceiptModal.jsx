@@ -5,7 +5,7 @@ import { MdCheckCircle, MdPrint } from 'react-icons/md';
 const ReceiptModal = ({ isOpen, onClose, orderData }) => {
   if (!isOpen) return null;
 
-  const { tableNumber, cart, totalPrice, timestamp, telegramSuccess } = orderData;
+  const { tableNumber, cart, subtotal, serviceFee, totalPrice, timestamp, telegramSuccess } = orderData;
 
   const handlePrint = () => {
     window.print();
@@ -88,9 +88,21 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
           {/* Separator */}
           <div className="border-t-2 border-dashed border-gray-300 my-4"></div>
 
-          {/* Total */}
-          <div className="mb-6">
-            <div className="flex justify-between items-center">
+          {/* Total breakdown */}
+          <div className="mb-6 space-y-2">
+            <div className="flex justify-between items-center text-gray-700">
+              <span className="text-base">Oraliq summa:</span>
+              <span className="font-semibold text-gray-800">
+                {subtotal.toLocaleString()} so'm
+              </span>
+            </div>
+            <div className="flex justify-between items-center text-gray-700">
+              <span className="text-base">Xizmat haqi (10%):</span>
+              <span className="font-semibold text-gray-800">
+                {serviceFee.toLocaleString()} so'm
+              </span>
+            </div>
+            <div className="border-t-2 border-gray-300 pt-2 flex justify-between items-center">
               <span className="text-lg font-bold text-gray-800">JAMI:</span>
               <span className="text-2xl font-bold text-green-600">
                 {totalPrice.toLocaleString()} so'm
