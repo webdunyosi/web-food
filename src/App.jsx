@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
 import Layout from './components/Layout';
 import MenuPage from './pages/MenuPage';
+import OrderPage from './pages/OrderPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('menu');
+  const [cart, setCart] = useState([]);
 
   const renderPage = () => {
     switch (currentPage) {
       case 'menu':
-        return <MenuPage />;
+        return (
+          <MenuPage 
+            cart={cart}
+            setCart={setCart}
+            onNavigateToOrder={() => setCurrentPage('order')}
+          />
+        );
+      case 'order':
+        return (
+          <OrderPage 
+            cart={cart}
+            setCart={setCart}
+            onBackToMenu={() => setCurrentPage('menu')}
+          />
+        );
       default:
-        return <MenuPage />;
+        return (
+          <MenuPage 
+            cart={cart}
+            setCart={setCart}
+            onNavigateToOrder={() => setCurrentPage('order')}
+          />
+        );
     }
   };
 
