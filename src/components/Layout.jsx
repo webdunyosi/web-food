@@ -17,13 +17,6 @@ const Layout = ({ children, currentPage, onPageChange }) => {
         <main className="flex-1 px-4 py-8">
           {children}
         </main>
-        
-        {/* Footer */}
-        <footer className="bg-white shadow-md mt-8">
-          <div className="max-w-7xl mx-auto px-4 py-4 text-center text-gray-600">
-            <p>© 2024 Choyxona Boshqaruv Tizimi. Barcha huquqlar himoyalangan.</p>
-          </div>
-        </footer>
       </div>
     </div>
   );

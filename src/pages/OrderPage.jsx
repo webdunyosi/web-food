@@ -65,7 +65,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Buyurtma</h1>
         <button
