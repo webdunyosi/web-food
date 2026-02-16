@@ -50,9 +50,9 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all whitespace-nowrap shadow-md hover:shadow-lg transform hover:scale-105 ${
+              className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 ${
                 selectedCategory === category.id
-                  ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white'
+                  ? 'bg-linear-to-r from-emerald-600 to-teal-600 text-white animate-pulse-subtle'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -144,7 +144,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                     onClick={() => {
                       setCart([...cart, { ...product, quantity: 1 }]);
                     }}
-                    className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg"
+                    className="w-full bg-linear-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <IoCart className="inline-block mr-1" aria-hidden="true" />
                     Qo'shish
