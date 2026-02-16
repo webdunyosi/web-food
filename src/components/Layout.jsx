@@ -4,7 +4,7 @@ import Header from './Header';
 
 const Layout = ({ children, currentPage, onPageChange }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex">
       {/* Sidebar */}
       <Sidebar currentPage={currentPage} onPageChange={onPageChange} />
       

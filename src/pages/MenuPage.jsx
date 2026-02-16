@@ -16,7 +16,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
         {cart.length > 0 && (
           <button
             onClick={onNavigateToOrder}
-            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="flex items-center gap-3 px-8 py-4 bg-linear-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <span className="text-2xl">🛒</span>
             <div className="text-left">
@@ -36,7 +36,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
               onClick={() => setSelectedCategory(category.id)}
               className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all whitespace-nowrap shadow-md hover:shadow-lg transform hover:scale-105 ${
                 selectedCategory === category.id
-                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
+                  ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -59,7 +59,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
             >
               {/* Product Image */}
-              <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+              <div className="relative h-48 bg-linear-to-br from-gray-100 to-gray-200 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -125,7 +125,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                     onClick={() => {
                       setCart([...cart, { ...product, quantity: 1 }]);
                     }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg"
+                    className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all font-semibold shadow-md hover:shadow-lg"
                   >
                     🛒 Qo'shish
                   </button>
