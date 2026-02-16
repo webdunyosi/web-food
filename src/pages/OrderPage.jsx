@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { sendToTelegram } from '../services/telegramService';
 import { IoArrowBack, IoCart } from 'react-icons/io5';
 import { MdCheckCircle } from 'react-icons/md';
+import ReceiptModal from '../components/ReceiptModal';
 
 const OrderPage = ({ cart, setCart, onBackToMenu }) => {
   const [tableNumber, setTableNumber] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [orderData, setOrderData] = useState(null);
 
   const updateQuantity = (productId, newQuantity) => {
     if (newQuantity === 0) {
@@ -48,15 +51,29 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
       
       message += `\n<b>💰 Jami summa:</b> ${getTotalPrice().toLocaleString()} so'm`;
 
-      const success = await sendToTelegram(message);
+      // Prepare order data for receipt first
+      const receiptData = {
+        tableNumber,
+        cart: [...cart],
+        totalPrice: getTotalPrice(),
+        timestamp: new Date().toLocaleString('uz-UZ'),
+        telegramSuccess: false
+      };
 
-      if (success) {
-        alert(`✅ Buyurtma muvaffaqiyatli yuborildi!\nStol: ${tableNumber}\nJami: ${getTotalPrice().toLocaleString()} so'm`);
-        // Reset form
-        setCart([]);
-        setTableNumber('');
-      } else {
-        alert('❌ Xatolik yuz berdi. Telegram sozlamalarini tekshiring.');
+      const success = await sendToTelegram(message);
+      
+      // Update telegram status
+      receiptData.telegramSuccess = success;
+
+      // Show receipt modal and reset form
+      setOrderData(receiptData);
+      setShowReceipt(true);
+      setCart([]);
+      setTableNumber('');
+      
+      // Log warning if Telegram failed
+      if (!success) {
+        console.warn('Telegram yuborishda xatolik, lekin buyurtma mahalliy saqlandi');
       }
     } catch (error) {
       console.error('Error submitting order:', error);
@@ -68,6 +85,15 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
 
   return (
     <div className="w-full mx-auto">
+      {/* Receipt Modal */}
+      {showReceipt && orderData && (
+        <ReceiptModal 
+          isOpen={showReceipt}
+          onClose={() => setShowReceipt(false)}
+          orderData={orderData}
+        />
+      )}
+      
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Buyurtma</h1>
         <button
