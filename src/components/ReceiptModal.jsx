@@ -32,7 +32,7 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
           </div>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 transition-colors"
+            className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
             aria-label="Yopish"
           >
             <IoClose className="text-3xl" />
@@ -131,14 +131,14 @@ const ReceiptModal = ({ isOpen, onClose, orderData }) => {
           <div className="mt-6 flex gap-3">
             <button
               onClick={handlePrint}
-              className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2"
+              className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2 cursor-pointer"
             >
               <MdPrint className="text-xl" />
               Chop etish
             </button>
             <button
               onClick={onClose}
-              className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+              className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium cursor-pointer"
             >
               Yopish
             </button>
