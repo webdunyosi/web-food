@@ -24,7 +24,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   return (
     <div className="w-full">
       {/* Category tabs */}
-      <div className="bg-white rounded-xl shadow-lg p-2 mb-5 flex items-center justify-between">
+      <div className="bg-white rounded-xl shadow-lg p-2 pr-4 mb-5 flex items-center justify-between">
         <div className="flex gap-3">
           {menuCategories.map((category) => (
             <button
@@ -89,7 +89,7 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
                   {product.name}
                 </h3>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-start gap-2 mb-4">
                   <p className="text-2xl font-bold text-emerald-600">
                     {product.price.toLocaleString()}
                   </p>
