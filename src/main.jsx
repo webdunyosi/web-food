@@ -38,12 +38,12 @@ root.render(
 
 // Hide loader after React has rendered AND all resources are loaded
 // This ensures nothing is shown in an incomplete state
-if (document.readyState === 'complete') {
+if (document.readyState === "complete") {
   // Page already loaded (e.g., cached) - wait a bit for React to mount
   setTimeout(hideLoader, 100);
 } else {
   // Wait for full page load including all resources
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     // Give React time to complete its render cycle
     setTimeout(hideLoader, 100);
   });
