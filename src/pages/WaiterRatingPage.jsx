@@ -44,7 +44,7 @@ const WaiterRatingPage = () => {
     setIsSubmitting(true);
 
     // Sanitize comment to prevent HTML injection
-    const sanitizedComment = comment ? escapeHtml(comment) : 'Izoh yo\'q';
+    const sanitizedComment = comment ? escapeHtml(comment) : "Izoh yo'q";
 
     // Format message for Telegram
     const message = `<b>⭐ Afitsant Bahosi</b>\n\n` +
@@ -69,7 +69,7 @@ const WaiterRatingPage = () => {
         setShowSuccess(false);
       }, 3000);
     } else {
-      setErrorMessage('Xatolik yuz berdi. Iltimos, qaytadan urinib ko\'ring.');
+      setErrorMessage("Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
     }
