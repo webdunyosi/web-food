@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { IoBook, IoCart, IoClose } from 'react-icons/io5';
+import { IoBook, IoCart, IoClose, IoPerson } from 'react-icons/io5';
 
 const Sidebar = ({ currentPage, onPageChange, isOpen, isMobile, onClose }) => {
   const handleNavigation = (page) => {
@@ -71,6 +71,19 @@ const Sidebar = ({ currentPage, onPageChange, isOpen, isMobile, onClose }) => {
             >
               <IoCart className="w-5 h-5" />
               <span>Buyurtma</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => handleNavigation('waiter-rating')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                currentPage === 'waiter-rating' 
+                  ? 'bg-white text-emerald-700 shadow-lg font-medium transform scale-105' 
+                  : 'text-white hover:bg-white/20 backdrop-blur-sm'
+              }`}
+            >
+              <IoPerson className="w-5 h-5" />
+              <span>Afitsantlar</span>
             </button>
           </li>
         </ul>
