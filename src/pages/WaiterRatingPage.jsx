@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { waiters } from '../data/waitersData';
 import { sendToTelegram } from '../services/telegramService';
 import { IoStar, IoStarOutline, IoPerson, IoCheckmarkCircle, IoSend, IoWarning, IoCloseCircle } from 'react-icons/io5';
+import ImageWithSkeleton from '../components/ImageWithSkeleton';
 
 const MAX_RATING = 5;
 
@@ -14,7 +15,6 @@ const WaiterRatingPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [imageErrors, setImageErrors] = useState({});
 
   // Sanitize text for HTML to prevent injection
   // This escapes HTML special characters for Telegram's HTML parse mode
@@ -25,10 +25,6 @@ const WaiterRatingPage = () => {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
-  };
-
-  const handleImageError = (waiterId) => {
-    setImageErrors(prev => ({ ...prev, [waiterId]: true }));
   };
 
   const handleSubmit = async (e) => {
@@ -154,16 +150,12 @@ const WaiterRatingPage = () => {
           >
             {/* Waiter Image */}
             <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden flex items-center justify-center">
-              {imageErrors[waiter.id] ? (
-                <IoPerson className="w-24 h-24 text-gray-400" />
-              ) : (
-                <img
-                  src={waiter.image}
-                  alt={`${waiter.firstName} ${waiter.lastName}`}
-                  className="w-full h-full object-cover"
-                  onError={() => handleImageError(waiter.id)}
-                />
-              )}
+              <ImageWithSkeleton
+                src={waiter.image}
+                alt={`${waiter.firstName} ${waiter.lastName}`}
+                className="w-full h-full object-cover"
+                fallbackIcon={IoPerson}
+              />
               {selectedWaiter?.id === waiter.id && (
                 <div className="absolute top-2 right-2 bg-emerald-500 text-white rounded-full p-2 shadow-lg">
                   <IoCheckmarkCircle className="text-2xl" />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { menuCategories } from '../data/menuData';
 import { IoCart, IoRestaurant, IoFastFood, IoCafe } from 'react-icons/io5';
 import { GiBread } from 'react-icons/gi';
+import ImageWithSkeleton from '../components/ImageWithSkeleton';
 
 const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
   const [selectedCategory, setSelectedCategory] = useState(menuCategories[0].id);
@@ -70,13 +71,11 @@ const MenuPage = ({ cart, setCart, onNavigateToOrder }) => {
             >
               {/* Product Image */}
               <div className="relative h-48 bg-linear-to-br from-gray-100 to-gray-200 overflow-hidden">
-                <img
+                <ImageWithSkeleton
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
+                  fallbackIcon={IoRestaurant}
                 />
                 {quantity > 0 && (
                   <div className="absolute top-2 right-2 bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-lg">

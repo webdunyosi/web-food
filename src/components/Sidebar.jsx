@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { IoBook, IoCart, IoClose, IoPerson } from 'react-icons/io5';
 
 const Sidebar = ({ currentPage, onPageChange, isOpen, isMobile, onClose }) => {
