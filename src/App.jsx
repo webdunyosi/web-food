@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from './components/Layout';
 import MenuPage from './pages/MenuPage';
 import OrderPage from './pages/OrderPage';
+import WaiterRatingPage from './pages/WaiterRatingPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('menu');
@@ -25,6 +26,8 @@ const App = () => {
             onBackToMenu={() => setCurrentPage('menu')}
           />
         );
+      case 'waiter-rating':
+        return <WaiterRatingPage />;
       default:
         return (
           <MenuPage 
