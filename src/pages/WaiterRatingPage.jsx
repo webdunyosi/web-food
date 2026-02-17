@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { waiters } from '../data/waitersData';
 import { sendToTelegram } from '../services/telegramService';
 import { IoStar, IoStarOutline, IoPerson, IoCheckmarkCircle, IoSend, IoWarning, IoCloseCircle } from 'react-icons/io5';
@@ -15,6 +15,17 @@ const WaiterRatingPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const ratingFormRef = useRef(null);
+
+  // Auto-scroll to rating form when waiter is selected
+  useEffect(() => {
+    if (selectedWaiter && ratingFormRef.current) {
+      ratingFormRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }, [selectedWaiter]);
 
   // Sanitize text for HTML to prevent injection
   // This escapes HTML special characters for Telegram's HTML parse mode
@@ -178,7 +189,7 @@ const WaiterRatingPage = () => {
 
       {/* Rating Form */}
       {selectedWaiter && (
-        <div className="bg-white rounded-xl shadow-lg p-6 animate-fade-in">
+        <div ref={ratingFormRef} className="bg-white rounded-xl shadow-lg p-6 animate-fade-in">
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
