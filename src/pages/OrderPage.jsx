@@ -197,7 +197,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
                   key={item.id}
                   className="flex justify-between items-center p-2 md:p-4 bg-gray-50 rounded-lg border border-gray-200"
                 >
-                  <div className="flex-1 min-w-0 mr-2">
+                  <div className="flex-1 min-w-0 mr-1 md:mr-2">
                     <p className="font-semibold text-gray-800 text-sm md:text-lg truncate">{item.name}</p>
                     <p className="text-xs md:text-sm text-gray-600">
                       {item.price.toLocaleString()} so'm x {item.quantity}
@@ -221,7 +221,7 @@ const OrderPage = ({ cart, setCart, onBackToMenu }) => {
                         +
                       </button>
                     </div>
-                    <div className="text-right w-20 md:w-32">
+                    <div className="text-right w-24 md:w-32">
                       <p className="font-bold text-emerald-600 text-sm md:text-lg">
                         {(item.price * item.quantity).toLocaleString()} so'm
                       </p>
